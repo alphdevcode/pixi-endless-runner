@@ -6,7 +6,7 @@ export class LabelScore extends PIXI.Text {
         super();
         this.x = App.config.score.x;
         this.y = App.config.score.y;
-        this.anchor.set(App.config.score.anchor);
+        this.anchor.set(App.config.score.anchor.x, App.config.score.anchor.y);
         this.style = App.config.score.style;
         this.renderScore();
     }

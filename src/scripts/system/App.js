@@ -22,7 +22,6 @@ class Application {
         this.app.stage.interactive = true;
         this.app.stage.addChild(this.scenes.container);
 
-        // [06]
         this.createPhysics();
     }
 
@@ -31,7 +30,7 @@ class Application {
         const runner = Matter.Runner.create();
         Matter.Runner.run(runner, this.physics);
     }
-    // [/06]
+
 
     res(key) {
         return this.loader.resources[key].texture;

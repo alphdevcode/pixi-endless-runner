@@ -4,10 +4,24 @@ import { GameScene } from "./GameScene";
 export const Config = {
     loader: Tools.massiveRequire(require["context"]('./../../sprites/', true, /\.(mp3|png|jpe?g)$/)),
     bgSpeed: 2,
+    mainText: {
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        anchor: 0.5,
+        style: {
+            fontFamily: "Verdana",
+            fontWeight: "bold",
+            fontSize: 80,
+            fill: ["#FF7F50"]
+        }
+    },
     score: {
-        x: 10,
+        x: window.innerWidth - 15,
         y: 10,
-        anchor: 0,
+        anchor: {
+            x: 1,
+            y: 0
+        },
         style: {
             fontFamily: "Verdana",
             fontWeight: "bold",

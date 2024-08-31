@@ -1,4 +1,5 @@
 import * as Matter from 'matter-js';
+import * as PIXI from 'pixi.js';
 import { LabelScore } from "./LabelScore";
 import { App } from '../system/App';
 import { Background } from "./Background";
@@ -12,11 +13,37 @@ export class GameScene extends Scene {
         this.createHero();
         this.createPlatforms();
         this.setEvents();
-        //[13]
         this.createUI();
-        //[/13]
+
+        this.handleCountdown();
     }
-    //[13]
+
+    async handleCountdown() {
+        this.mainTextMessage = new PIXI.Text("Ready?", App.config.mainText.style);
+        this.mainTextMessage.anchor.set(App.config.mainText.anchor);
+        this.mainTextMessage.x =App.config.mainText.x;
+        this.mainTextMessage.y = App.config.mainText.y;
+        this.container.addChild(this.mainTextMessage);
+    
+        // We need to wait 1ms so game is initialized properly before pausinig for the countdown so everything is rendered properly
+        await new Promise(resolve => setTimeout(resolve, 1));
+
+        // wait for 1 seconds before starting the game
+        App.app.ticker.stop();
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        this.mainTextMessage.visible = false;
+        App.app.ticker.start();
+    }
+
+    handleGameOver() {
+        this.mainTextMessage.text = "Game Over";
+        this.mainTextMessage.visible = true;
+
+        setTimeout(() => {
+            App.scenes.start("Game");
+        },  2000);
+    }
+    
     createUI() {
         this.labelScore = new LabelScore();
         this.container.addChild(this.labelScore);
@@ -24,8 +51,7 @@ export class GameScene extends Scene {
             this.labelScore.renderScore(this.hero.score);
         });
     }
-    //[13]
-
+    
     setEvents() {
         Matter.Events.on(App.physics, 'collisionStart', this.onCollisionStart.bind(this));
     }
@@ -55,11 +81,9 @@ export class GameScene extends Scene {
             this.hero.startJump();
         });
 
-        // [14]
         this.hero.sprite.once("die", () => {
-            App.scenes.start("Game");
+            this.handleGameOver();
         });
-        // [/14]
     }
 
     createBackground() {
@@ -84,5 +108,6 @@ export class GameScene extends Scene {
         this.hero.destroy();
         this.platfroms.destroy();
         this.labelScore.destroy();
+        this.mainTextMessage.destroy();
     }
 }
