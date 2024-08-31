@@ -10,10 +10,16 @@ export class ScenesManager {
 
     start(scene) {
         if (this.scene) {
-            this.scene.remove();
+            this.scene.destroy();
         }
 
         this.scene = new App.config.scenes[scene]();
         this.container.addChild(this.scene.container);
+    }
+
+    update(dt) {
+        if (this.scene && this.scene.update) {
+            this.scene.update(dt);
+        }
     }
 }

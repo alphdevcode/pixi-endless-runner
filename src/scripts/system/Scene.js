@@ -9,12 +9,11 @@ export class Scene {
         App.app.ticker.add(this.update, this);
     }
 
-    create() {}
-    update() {}
-    destroy() {}
+    update() {
 
-    remove() {
-        App.app.ticker.remove(this.update, this);
-        this.destroy();
+    }
+
+    destroy() {
+        
     }
 }
