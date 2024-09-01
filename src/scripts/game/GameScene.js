@@ -14,16 +14,20 @@ export class GameScene extends Scene {
         this.createPlatforms();
         this.setEvents();
         this.createUI();
-
+        this.initializeMainText();
         this.handleCountdown();
     }
 
-    async handleCountdown() {
-        this.mainTextMessage = new PIXI.Text("Ready?", App.config.mainText.style);
+    initializeMainText() {
+        this.mainTextMessage = new PIXI.Text("", App.config.mainText.style);
         this.mainTextMessage.anchor.set(App.config.mainText.anchor);
-        this.mainTextMessage.x =App.config.mainText.x;
+        this.mainTextMessage.x = App.config.mainText.x;
         this.mainTextMessage.y = App.config.mainText.y;
         this.container.addChild(this.mainTextMessage);
+    }
+
+    async handleCountdown() {
+        this.mainTextMessage.text = "Get Ready!";
     
         // We need to wait 1ms so game is initialized properly before pausinig for the countdown so everything is rendered properly
         await new Promise(resolve => setTimeout(resolve, 1));
