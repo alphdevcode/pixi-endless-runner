@@ -74,8 +74,6 @@ export class Hero {
         this.sprite.y = App.config.hero.position.y;
         this.sprite.loop = true;
         this.sprite.animationSpeed = .7;
-        this.sprite.scale.x = .6;
-        this.sprite.scale.y = .6;
         this.sprite.play();
     }
 
