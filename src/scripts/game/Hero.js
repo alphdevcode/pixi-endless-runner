@@ -43,7 +43,7 @@ export class Hero {
         this.sprite.x = this.body.position.x - this.sprite.width / 2;
         this.sprite.y = this.body.position.y - this.sprite.height / 2;
 
-        if (this.sprite.y > window.innerHeight) {
+        if (this.sprite.y > window.innerHeight || this.sprite.x < 0) {
             this.sprite.emit("die");
         }
     }
