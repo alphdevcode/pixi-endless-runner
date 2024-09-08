@@ -32,8 +32,8 @@ export const Config = {
     diamonds: {
         chance: 0.4,
         offset: {
-            min: 100,
-            max: 200
+            min: 150,
+            max: 250
         }
     },
     platforms: {

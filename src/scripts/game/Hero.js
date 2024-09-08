@@ -43,21 +43,39 @@ export class Hero {
         this.sprite.x = this.body.position.x - this.sprite.width / 2;
         this.sprite.y = this.body.position.y - this.sprite.height / 2;
 
-        if (this.sprite.y > window.innerHeight) {
+        if (this.sprite.y > window.innerHeight || this.sprite.x < 0) {
             this.sprite.emit("die");
         }
     }
 
     createSprite() {
         this.sprite = new PIXI.AnimatedSprite([
-            App.res("walk1"),
-            App.res("walk2")
+            App.res("TV-Walk1"),
+            App.res("TV-Walk2"),
+            App.res("TV-Walk3"),
+            App.res("TV-Walk4"),
+            App.res("TV-Walk5"),
+            App.res("TV-Walk6"),
+            App.res("TV-Walk7"),
+            App.res("TV-Walk8"),
+            App.res("TV-Walk9"),
+            App.res("TV-Walk10"),
+            App.res("TV-Walk11"),
+            App.res("TV-Walk12"),
+            App.res("TV-Walk13"),
+            App.res("TV-Walk14"),
+            App.res("TV-Walk15"),
+            App.res("TV-Walk16"),
+            App.res("TV-Walk17"),
+            App.res("TV-Walk18")
         ]);
 
         this.sprite.x = App.config.hero.position.x;
         this.sprite.y = App.config.hero.position.y;
         this.sprite.loop = true;
-        this.sprite.animationSpeed = 0.1;
+        this.sprite.animationSpeed = .7;
+        this.sprite.scale.x = .6;
+        this.sprite.scale.y = .6;
         this.sprite.play();
     }
 

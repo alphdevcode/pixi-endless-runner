@@ -14,16 +14,21 @@ export class GameScene extends Scene {
         this.createPlatforms();
         this.setEvents();
         this.createUI();
-
-        this.handleCountdown();
+        this.initializeMainText();
+        this.handleGameStart();
     }
 
-    async handleCountdown() {
-        this.mainTextMessage = new PIXI.Text("Ready?", App.config.mainText.style);
+    initializeMainText() {
+        this.mainTextMessage = new PIXI.Text("", App.config.mainText.style);
         this.mainTextMessage.anchor.set(App.config.mainText.anchor);
-        this.mainTextMessage.x =App.config.mainText.x;
+        this.mainTextMessage.x = App.config.mainText.x;
         this.mainTextMessage.y = App.config.mainText.y;
         this.container.addChild(this.mainTextMessage);
+    }
+
+    async handleGameStart() {
+        this.isGameOver = false;
+        this.mainTextMessage.text = "Get Ready!";
     
         // We need to wait 1ms so game is initialized properly before pausinig for the countdown so everything is rendered properly
         await new Promise(resolve => setTimeout(resolve, 1));
@@ -78,11 +83,12 @@ export class GameScene extends Scene {
 
         this.container.interactive = true;
         this.container.on("pointerdown", () => {
-            this.hero.startJump();
+            if(!this.isGameOver) this.hero.startJump();
         });
 
         this.hero.sprite.once("die", () => {
             this.handleGameOver();
+            this.isGameOver = true;
         });
     }
 
