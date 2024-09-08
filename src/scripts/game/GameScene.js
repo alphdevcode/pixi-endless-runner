@@ -15,7 +15,7 @@ export class GameScene extends Scene {
         this.setEvents();
         this.createUI();
         this.initializeMainText();
-        this.handleCountdown();
+        this.handleGameStart();
     }
 
     initializeMainText() {
@@ -26,7 +26,8 @@ export class GameScene extends Scene {
         this.container.addChild(this.mainTextMessage);
     }
 
-    async handleCountdown() {
+    async handleGameStart() {
+        this.isGameOver = false;
         this.mainTextMessage.text = "Get Ready!";
     
         // We need to wait 1ms so game is initialized properly before pausinig for the countdown so everything is rendered properly
@@ -82,11 +83,12 @@ export class GameScene extends Scene {
 
         this.container.interactive = true;
         this.container.on("pointerdown", () => {
-            this.hero.startJump();
+            if(!this.isGameOver) this.hero.startJump();
         });
 
         this.hero.sprite.once("die", () => {
             this.handleGameOver();
+            this.isGameOver = true;
         });
     }
 
