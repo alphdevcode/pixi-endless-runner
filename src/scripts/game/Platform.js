@@ -1,15 +1,11 @@
 import * as Matter from 'matter-js';
 import * as PIXI from "pixi.js";
 import { App } from '../system/App';
-// [10]
 import { Diamond } from './Diamond';
-// [/10]
 
 export class Platform {
     constructor(rows, cols, x) {
-        // [10]
         this.diamonds = [];
-        // [/10]
 
         this.rows = rows;
         this.cols = cols;
@@ -26,7 +22,6 @@ export class Platform {
         this.createDiamonds();
     }
 
-    // [10]
     createDiamonds() {
         const y = App.config.diamonds.offset.min + Math.random() * (App.config.diamonds.offset.max - App.config.diamonds.offset.min);
 
@@ -43,7 +38,6 @@ export class Platform {
             diamond.createBody();
             this.diamonds.push(diamond);
     }
-    // [/10]
 
     createBody() {
         this.body = Matter.Bodies.rectangle(this.width / 2 + this.container.x, this.height / 2 + this.container.y, this.width, this.height, {friction: 0, isStatic: true});
