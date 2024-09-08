@@ -19,6 +19,8 @@ export class Background {
     createSprite(i) {
         const sprite = App.sprite("bg");
 
+        sprite.scale.x = 1.5;
+        sprite.scale.y = 1.5;
         sprite.x = sprite.width * i;
         sprite.y = 0;
         this.container.addChild(sprite);
