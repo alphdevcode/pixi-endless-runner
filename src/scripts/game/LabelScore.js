@@ -12,6 +12,6 @@ export class LabelScore extends PIXI.Text {
     }
 
     renderScore(score = 0) {
-        this.text = `Score: ${score}`;
+        this.text = `Puntuación: ${score}`;
     }
 }

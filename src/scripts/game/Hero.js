@@ -15,7 +15,7 @@ export class Hero {
     }
 
     collectDiamond(diamond) {
-        ++this.score;
+        this.score+=10;
         this.sprite.emit("score");
         diamond.destroy();
     }
