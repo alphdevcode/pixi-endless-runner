@@ -12,7 +12,7 @@ export const Config = {
             fontFamily: "Verdana",
             fontWeight: "bold",
             fontSize: 80,
-            fill: ["#FF7F50"]
+            fill: ["#FFFFFF"]
         }
     },
     score: {
@@ -26,7 +26,7 @@ export const Config = {
             fontFamily: "Verdana",
             fontWeight: "bold",
             fontSize: 44,
-            fill: ["#FF7F50"]
+            fill: ["#FFFFFF"]
         }
     },
     diamonds: {

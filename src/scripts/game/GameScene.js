@@ -28,7 +28,7 @@ export class GameScene extends Scene {
 
     async handleGameStart() {
         this.isGameOver = false;
-        this.mainTextMessage.text = "Get Ready!";
+        this.mainTextMessage.text = "¡Prepárate!";
     
         // We need to wait 1ms so game is initialized properly before pausinig for the countdown so everything is rendered properly
         await new Promise(resolve => setTimeout(resolve, 1));
@@ -41,7 +41,7 @@ export class GameScene extends Scene {
     }
 
     handleGameOver() {
-        this.mainTextMessage.text = "Game Over";
+        this.mainTextMessage.text = "Inténtalo de nuevo";
         this.mainTextMessage.visible = true;
 
         setTimeout(() => {
