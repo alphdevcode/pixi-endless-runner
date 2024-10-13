@@ -3,7 +3,7 @@ import { GameScene } from "./GameScene";
 
 export const Config = {
     loader: Tools.massiveRequire(require["context"]('./../../sprites/', true, /\.(mp3|png|jpe?g)$/)),
-    bgSpeed: 2,
+    bgSpeed: .4,
     mainText: {
         x: window.innerWidth / 2,
         y: window.innerHeight / 2,
@@ -37,7 +37,7 @@ export const Config = {
         }
     },
     platforms: {
-        moveSpeed: -1.5,
+        moveSpeed: -2.5,
         ranges: {
             rows: {
                 min: 2,
