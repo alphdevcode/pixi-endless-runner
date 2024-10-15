@@ -12,6 +12,7 @@ export class Hero {
         this.maxJumps = App.config.hero.maxJumps;
         this.jumpCount = 0;
         this.score = 0;
+        this.dt = 1 / 60;
     }
 
     collectDiamond(diamond) {
@@ -24,7 +25,7 @@ export class Hero {
         if (this.platform || this.jumpCount === 1) {
             ++this.jumpCount;
             this.platform = null;
-            Matter.Body.setVelocity(this.body, { x: 0, y: -this.dy });
+            Matter.Body.setVelocity(this.body, { x: 0, y: -this.dy * this.dt });
         }
     }
 
@@ -39,7 +40,9 @@ export class Hero {
         this.body.gameHero = this;
     }
 
-    update() {
+    update(dt) {
+        this.dt = dt;
+
         this.sprite.x = this.body.position.x - this.sprite.width / 2;
         this.sprite.y = this.body.position.y - this.sprite.height / 2;
 
