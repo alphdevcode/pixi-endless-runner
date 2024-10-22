@@ -54,11 +54,11 @@ export const Config = {
         }
     },
     hero: {
-        jumpSpeed: 15,
+        jumpSpeed: 14,
         maxJumps: 2,
         position: {
             x: 350,
-            y: 595
+            y: 600
         }
     },
     scenes: {
